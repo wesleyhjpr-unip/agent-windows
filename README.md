@@ -31,12 +31,15 @@ Segue esse as instruções para gerar um PAT {Personal access token} , para conf
     ![](img/2.png)
 
 3. Selecione + **New Token**.
+
     ![](img/3.png)
 
 4. Dê um nome ao seu token (IIS-homologacao-token), selecione a organização onde deseja usá-lo e defina-o para expirar automaticamente após um determinado número de dias.
+
     ![](img/4.png)
 
 5. Quando terminar, copie o token e armazene-o em um local seguro. Para a sua segurança, ele não será exibido novamente.
+
     ![](img/5.png)
 ---
 # Criar agent pool (PARTE DO EMERSON)
@@ -46,12 +49,15 @@ Segue esse as instruções para gerar um PAT {Personal access token} , para conf
     A. Entre em sua organização (https://dev.azure.com/unipti).
 
     B. Selecione as **configurações da Organização**.
+
     ![](img/6.png)
 
     C. Selecione **Pools de Agentes** e clique em **Add pool**.
-    ![](img/7.png)
-    D. Clique em **Self-hosted** coloque um nome, pode ser (IIS-homologacao), e clique em **Create**.
 
+    ![](img/7.png)
+    
+    D. Clique em **Self-hosted** coloque um nome, pode ser (IIS-homologacao), e clique em **Create**.
+    
     ![](img/8.png)
 ---
 
