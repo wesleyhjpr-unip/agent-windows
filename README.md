@@ -99,3 +99,8 @@ Segue esse as instruções para gerar um PAT {Personal access token} , para conf
     Após a reinicialização da máquina, o serviço do agente deve ser iniciado automaticamente e o agente deve aparecer como "Online" no Azure DevOps.
 
     ![](img/10.png)
+
+    ### 💡 Dica importante sobre a conta de serviço
+    É uma prática de segurança recomendada usar uma **conta de serviço dedicada com privilégios mínimos** (como `NT AUTHORITY\NETWORK SERVICE`) para executar o agente, em vez de uma conta de administrador. Durante a configuração interativa, você pode especificar essa conta.
+
+    Se o agente não iniciar automaticamente mesmo após esses passos, pode ser necessário remover e reconfigurar completamente o agente.
