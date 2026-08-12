@@ -55,7 +55,7 @@ Segue esse as instruções para gerar um PAT {Personal access token} , para conf
     ![](img/8.png)
 ---
 
-## Configurar o Agente (PARTE DO SERVIDOR)
+# Configurar o Agente (PARTE DO SERVIDOR)
 
 1. Selecione o pool criado (IIS-homologacao) no lado direito da página e clique em **New agent**.
     
