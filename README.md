@@ -68,6 +68,7 @@ O *agent pool* é o grupo de agentes que executará os pipelines. Siga os passos
 ---
 
 ## 3. Configurar o Agente na Máquina Windows
+> 📖 **Referência:** [Documentação oficial sobre configuração de agentes do Windows auto-hospedados](https://learn.microsoft.com/pt-br/azure/devops/pipelines/agents/windows-agent?view=azure-devops&tabs=IP-V4)
 
 > ⚠️ Esta etapa deve ser executada **no servidor** onde o agente será instalado.
 
