@@ -95,7 +95,7 @@ Segue esse as instruções para gerar um PAT {Personal access token} , para conf
     - Tipo de autenticação (PAT, integrado, etc.), no caso é **PAT**. Pegue o **PAT** com o **Emerson**;
     - Nome do pool e nome do agente (**IIS-homologacao**).
 
-    Durante o processo, quando a pergunta Enter run agent as service? (Y/N) aparecer, responda com **Y** (**sim**). O script então solicitará as credenciais da conta de serviço que será usada para executar o agente.
+    Durante o processo, quando aparecer a pergunta "Enter run agent as service? (Y/N)", responda com **Y** (**sim**). O script então solicitará as credenciais da conta de serviço que será usada para executar o agente.
     Após a reinicialização da máquina, o serviço do agente deve ser iniciado automaticamente e o agente deve aparecer como "Online" no Azure DevOps.
 
     ![](img/10.png)
