@@ -1,106 +1,118 @@
-# Links Auxiliares - Resumo
+# Guia de Configuração do Agente Windows para Azure DevOps
 
-## 1. Tokens de Acesso Pessoal (PAT)
-🔗 [Documentação oficial](https://learn.microsoft.com/pt-br/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows)
+Este guia descreve, passo a passo, como configurar um **agente auto-hospedado** do Azure DevOps em uma máquina Windows, incluindo a criação do token de acesso pessoal (PAT) e do *agent pool*.
 
-- Autenticação alternativa ao Azure DevOps.
-- Substitui senha para ferramentas externas.
-- Configure em *Configurações do Usuário > Tokens de Acesso Pessoal*.
+## Índice
+
+1. [Pré-requisitos](#pré-requisitos)
+2. [Criar um Token de Acesso Pessoal (PAT)](#1-criar-um-token-de-acesso-pessoal-pat)
+3. [Criar um Agent Pool](#2-criar-um-agent-pool)
+4. [Configurar o Agente na Máquina Windows](#3-configurar-o-agente-na-máquina-windows)
+
+## Pré-requisitos
+
+- Acesso à organização no Azure DevOps (`https://dev.azure.com/unipti`).
+- Conta com permissão para criar tokens e pools de agentes.
+- Máquina Windows (Windows 10/11 ou Windows Server) onde o agente será instalado.
+- O **PAT** será fornecido pelo Emerson (necessário para autenticar o agente).
 
 ---
 
-## 2. Agente Windows para Pipelines
-🔗 [Configuração de agente Windows](https://learn.microsoft.com/pt-br/azure/devops/pipelines/agents/windows-agent?view=azure-devops&tabs=IP-V4)
+## 1. Criar um Token de Acesso Pessoal (PAT)
 
-- Agente auto-hospedado para execução de pipelines em Windows.
-- Suporta Windows 10/11 e Server (versões específicas).
-- Necessário para builds e deploys baseados em Windows.
+O PAT é um mecanismo de autenticação alternativo ao Azure DevOps, utilizado para substituir a senha em ferramentas externas, como o agente de build.
+
+> 📖 **Referência:** [Documentação oficial sobre Tokens de Acesso Pessoal](https://learn.microsoft.com/pt-br/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows)
+
+1. Acesse sua organização em [https://dev.azure.com/unipti](https://dev.azure.com/unipti).
+
+2. No canto superior direito, abra as **Configurações do usuário** e selecione **Tokens de acesso pessoal**.
+
+   ![](img/1.png)
+   ![](img/2.png)
+
+3. Clique em **+ New Token** para criar um novo token.
+
+   ![](img/3.png)
+
+4. Dê um nome ao token (por exemplo, `IIS-homologacao-token`), selecione a organização onde ele será usado e defina uma data de expiração automática.
+
+   ![](img/4.png)
+
+5. Ao finalizar, **copie o token e guarde-o em um local seguro**. Por segurança, ele **não será exibido novamente**.
+
+   ![](img/5.png)
 
 ---
 
+## 2. Criar um Agent Pool
 
-# Azure Pipelines agents (PARTE DO EMERSON)
+O *agent pool* é o grupo de agentes que executará os pipelines. Siga os passos abaixo para criá-lo:
 
-Segue esse as instruções para gerar um PAT {Personal access token} , para configurar o agent  no azure devops.
+1. Abra um navegador e acesse as **Configurações da Organização**:
 
+   A. Entre em sua organização em [https://dev.azure.com/unipti](https://dev.azure.com/unipti).
 
-1. Entre em sua organização ( https://dev.azure.com/unipti)
+   B. Selecione as **Configurações da Organização** no menu lateral esquerdo.
 
-2. Na sua página inicial, abra as configurações do usuário ![](img/1.png) e selecione **Tokens de acesso pessoal**.
+   ![](img/6.png)
 
-    ![](img/2.png)
+   C. Acesse **Pools de Agentes** e clique em **Add pool**.
 
-3. Selecione + **New Token**.
+   ![](img/7.png)
 
-    ![](img/3.png)
+   D. Selecione **Self-hosted**, defina um nome (por exemplo, `IIS-homologacao`) e clique em **Create**.
 
-4. Dê um nome ao seu token (IIS-homologacao-token), selecione a organização onde deseja usá-lo e defina-o para expirar automaticamente após um determinado número de dias.
+   ![](img/8.png)
 
-    ![](img/4.png)
-
-5. Quando terminar, copie o token e armazene-o em um local seguro. Para a sua segurança, ele não será exibido novamente.
-
-    ![](img/5.png)
----
-# Criar agent pool (PARTE DO EMERSON)
-
-1. Abra um navegador e navegue até a guia Pools de agentes para sua organização do Azure Pipelines ou Azure DevOps Server ou servidor TFS:
-
-    A. Entre em sua organização (https://dev.azure.com/unipti).
-
-    B. Selecione as **configurações da Organização**.
-
-    ![](img/6.png)
-
-    C. Selecione **Pools de Agentes** e clique em **Add pool**.
-
-    ![](img/7.png)
-
-    D. Clique em **Self-hosted** coloque um nome, pode ser (IIS-homologacao), e clique em **Create**.
-    
-    ![](img/8.png)
 ---
 
-# Configurar o Agente (PARTE DO SERVIDOR)
+## 3. Configurar o Agente na Máquina Windows
 
-1. Selecione o pool criado (IIS-homologacao) no lado direito da página e clique em **New agent**.
-    
-    ![](img/9.png)
+> ⚠️ Esta etapa deve ser executada **no servidor** onde o agente será instalado.
 
-    ## Download do agente
+1. Na página do pool criado, clique em **New agent**.
 
-    Clique em **Download** ou [acesse esse link](https://download.agent.dev.azure.com/agent/5.277.0/vsts-agent-win-x64-5.277.0.zip).
+   ![](img/9.png)
 
-    Faça o download do agente (arquivo .zip) para a pasta `Downloads` ou local de sua preferência.
-    
+### 3.1. Baixar o agente
 
-    ## Criar (extrair) o agente
+Clique em **Download** na tela do Azure DevOps ou acesse diretamente o [link de download do agente](https://download.agent.dev.azure.com/agent/5.277.0/vsts-agent-win-x64-5.277.0.zip).
 
-    Crie a pasta de instalação e extraia o conteúdo do arquivo baixado:
+Salve o arquivo `.zip` na pasta `Downloads` (ou no local de sua preferência).
 
-    ```powershell
-    PS C:\> mkdir agent ; cd agent
-    PS C:\agent> Add-Type -AssemblyName System.IO.Compression.FileSystem ;
-    [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-5.277.0.zip", "$PWD")
-    ```
-    ## Configurar o agente
-    Execute o script de configuração para definir as opções de conexão e autenticação 
+### 3.2. Extrair o agente
 
-    ```powershell
-    PS C:\agent> .\config.cmd
-    ```
-    Siga as instruções exibidas no terminal para informar:
+Crie a pasta de instalação e extraia o conteúdo do arquivo baixado:
 
-    - URL da organização ou coleção de projetos (https://dev.azure.com/unipti);
-    - Tipo de autenticação (PAT, integrado, etc.), no caso é **PAT**. Pegue o **PAT** com o **Emerson**;
-    - Nome do pool e nome do agente (**IIS-homologacao**).
+```powershell
+PS C:\> mkdir agent ; cd agent
+PS C:\agent> Add-Type -AssemblyName System.IO.Compression.FileSystem ;
+[System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-5.277.0.zip", "$PWD")
+```
 
-    Durante o processo, quando aparecer a pergunta "Enter run agent as service? (Y/N)", responda com **Y** (**sim**). O script então solicitará as credenciais da conta de serviço que será usada para executar o agente.
-    Após a reinicialização da máquina, o serviço do agente deve ser iniciado automaticamente e o agente deve aparecer como "Online" no Azure DevOps.
+### 3.3. Configurar o agente
 
-    ![](img/10.png)
+Execute o script de configuração:
 
-    ### 💡 Dica importante sobre a conta de serviço
-    É uma prática de segurança recomendada usar uma **conta de serviço dedicada com privilégios mínimos** (como `NT AUTHORITY\NETWORK SERVICE`) para executar o agente, em vez de uma conta de administrador. Durante a configuração interativa, você pode especificar essa conta.
+```powershell
+PS C:\agent> .\config.cmd
+```
 
-    Se o agente não iniciar automaticamente mesmo após esses passos, pode ser necessário remover e reconfigurar completamente o agente.
+Siga as instruções exibidas no terminal e informe:
+
+- **URL da organização** — `https://dev.azure.com/unipti`;
+- **Tipo de autenticação** — escolha **PAT** e informe o token fornecido pelo **Emerson**;
+- **Nome do pool** e **nome do agente** — use `IIS-homologacao`.
+
+Quando a pergunta **"Enter run agent as service? (Y/N)"** aparecer, responda com **Y** (sim). O script solicitará as credenciais da conta de serviço usada para executar o agente.
+
+Após a reinicialização da máquina, o serviço do agente deve iniciar automaticamente e o agente deve aparecer como **Online** no Azure DevOps.
+
+![](img/10.png)
+
+> 💡 **Dica importante sobre a conta de serviço**
+>
+> É uma prática de segurança recomendada usar uma **conta de serviço dedicada com privilégios mínimos** (como `NT AUTHORITY\NETWORK SERVICE`) para executar o agente, em vez de uma conta de administrador. Durante a configuração interativa, você pode especificar essa conta.
+>
+> Se o agente não iniciar automaticamente após esses passos, pode ser necessário remover e reconfigurar completamente o agente.
