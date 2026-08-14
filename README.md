@@ -26,9 +26,8 @@ O PAT é um mecanismo de autenticação alternativo ao Azure DevOps, utilizado p
 
 1. Acesse sua organização em [https://dev.azure.com/unipti](https://dev.azure.com/unipti).
 
-2. No canto superior direito, abra as **Configurações do usuário** e selecione **Tokens de acesso pessoal**.
-
-   ![](img/1.png)
+2. No canto superior direito , abra as **Configurações do usuário** ![](img/1.png) e selecione **Tokens de acesso pessoal**.
+   
    ![](img/2.png)
 
 3. Clique em **+ New Token** para criar um novo token.
