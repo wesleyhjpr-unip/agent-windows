@@ -4,10 +4,10 @@ Este guia descreve, passo a passo, como configurar um **agente auto-hospedado** 
 
 ## Índice
 
-1. [Pré-requisitos](#pré-requisitos)
-2. [Criar um Token de Acesso Pessoal (PAT)](#1-criar-um-token-de-acesso-pessoal-pat)
-3. [Criar um Agent Pool](#2-criar-um-agent-pool)
-4. [Configurar o Agente na Máquina Windows](#3-configurar-o-agente-na-máquina-windows)
+1. [Pré-requisitos](#1-pré-requisitos)
+2. [Criar um Token de Acesso Pessoal (PAT)](#2-criar-um-token-de-acesso-pessoal-pat)
+3. [Criar um Agent Pool](#3-criar-um-agent-pool)
+4. [Configurar o Agente na Máquina Windows](#4-configurar-o-agente-na-máquina-windows)
 
 ## 1. Pré-requisitos
 
