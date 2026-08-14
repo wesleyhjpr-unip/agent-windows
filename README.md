@@ -9,7 +9,7 @@ Este guia descreve, passo a passo, como configurar um **agente auto-hospedado** 
 3. [Criar um Agent Pool](#2-criar-um-agent-pool)
 4. [Configurar o Agente na Máquina Windows](#3-configurar-o-agente-na-máquina-windows)
 
-## Pré-requisitos
+## 1. Pré-requisitos
 
 - Acesso à organização no Azure DevOps (`https://dev.azure.com/unipti`).
 - Conta com permissão para criar tokens e pools de agentes.
@@ -18,7 +18,7 @@ Este guia descreve, passo a passo, como configurar um **agente auto-hospedado** 
 
 ---
 
-## 1. Criar um Token de Acesso Pessoal (PAT)
+## 2. Criar um Token de Acesso Pessoal (PAT)
 
 O PAT é um mecanismo de autenticação alternativo ao Azure DevOps, utilizado para substituir a senha em ferramentas externas, como o agente de build.
 
@@ -45,7 +45,7 @@ O PAT é um mecanismo de autenticação alternativo ao Azure DevOps, utilizado p
 
 ---
 
-## 2. Criar um Agent Pool
+## 3. Criar um Agent Pool
 
 O *agent pool* é o grupo de agentes que executará os pipelines. Siga os passos abaixo para criá-lo:
 
@@ -67,7 +67,7 @@ O *agent pool* é o grupo de agentes que executará os pipelines. Siga os passos
 
 ---
 
-## 3. Configurar o Agente na Máquina Windows
+## 4. Configurar o Agente na Máquina Windows
 > 📖 **Referência:** [Documentação oficial sobre configuração de agentes do Windows auto-hospedados](https://learn.microsoft.com/pt-br/azure/devops/pipelines/agents/windows-agent?view=azure-devops&tabs=IP-V4)
 
 > ⚠️ Esta etapa deve ser executada **no servidor** onde o agente será instalado.
@@ -76,13 +76,13 @@ O *agent pool* é o grupo de agentes que executará os pipelines. Siga os passos
 
    ![](img/9.png)
 
-### 3.1. Baixar o agente
+### 4.1. Baixar o agente
 
 Clique em **Download** na tela do Azure DevOps ou acesse diretamente o [link de download do agente](https://download.agent.dev.azure.com/agent/5.277.0/vsts-agent-win-x64-5.277.0.zip).
 
 Salve o arquivo `.zip` na pasta `Downloads` (ou no local de sua preferência).
 
-### 3.2. Extrair o agente
+### 4.2. Extrair o agente
 
 Crie a pasta de instalação e extraia o conteúdo do arquivo baixado:
 
@@ -92,7 +92,7 @@ PS C:\agent> Add-Type -AssemblyName System.IO.Compression.FileSystem ;
 [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-5.277.0.zip", "$PWD")
 ```
 
-### 3.3. Configurar o agente
+### 4.3. Configurar o agente
 
 Execute o script de configuração:
 
